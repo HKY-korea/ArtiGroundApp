@@ -22,7 +22,6 @@ const SocialLoginBar = ({faceBookLogin, twitterLogin, googleLogin}) => (
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 167,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row'

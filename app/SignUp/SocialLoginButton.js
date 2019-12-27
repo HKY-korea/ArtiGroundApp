@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableHighlight } from 'react-native';
-import image from './assets/images/image';
+import image from '../assets/images/image';
 
 const SocialLoginButton = ({imageSource, loginFunction}) => (
     <View style={styles.button}>

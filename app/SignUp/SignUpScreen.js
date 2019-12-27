@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import BackButton from './BackButton';
 import SignUp from './SignUp';
 import Inputs from './Inputs';
 import SocialLoginBar from './SocialLoginBar';
 import Login from './Login';
 
-class App extends Component {
+class SignUpScreen extends Component {
     constructor() {
         super();
         this.state = {
@@ -68,66 +68,62 @@ class App extends Component {
         const { profileValue, mailValue, passwordValue } = this.state;
 
         return (
-            <View style={styles.container}>
-                <View>
-                    <BackButton backWard={this.backWard} />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.container}>
+                    <View style={styles.backButtonContainer}>
+                        <BackButton backWard={this.backWard} />
+                    </View>
+                    {/* <Header /> 작은 아티그라운드 로고 */} 
+                    <View style={styles.inputContainer}>
+                        <Inputs
+                            profileValue={profileValue}
+                            mailValue={mailValue}
+                            passwordValue={passwordValue}
+                            profileChange={(text) => this.profileChange(text)}
+                            mailChange={(text) => this.mailChange(text)}
+                            passwordChange={(text) => this.passwordChange(text)}/>
+                        <SignUp signUp={this.signUp} />
+                    </View>
+                    <View style={styles.socialLoginContainer}>
+                        <SocialLoginBar 
+                            faceBookLogin={this.faceBookLogin} 
+                            twitterLogin={this.twitterLogin} 
+                            googleLogin={this.googleLogin} />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textStyle} >Already have an acount?</Text>
+                    </View>
+                    <View style={styles.footer}>
+                        <Login login={this.login} />
+                    </View>
                 </View>
-                {/* <Header /> 작은 아티그라운드 로고 */} 
-                <View style={styles.inputContainer}>
-                    <Inputs
-                        profileValue={profileValue}
-                        mailValue={mailValue}
-                        passwordValue={passwordValue}
-                        profileChange={(text) => this.profileChange(text)}
-                        mailChange={(text) => this.mailChange(text)}
-                        passwordChange={(text) => this.passwordChange(text)}/>
-                    <SignUp signUp={this.signUp} />
-                </View>
-                <View style={styles.socialLoginContainer}>
-                    <SocialLoginBar 
-                        faceBookLogin={this.faceBookLogin} 
-                        twitterLogin={this.twitterLogin} 
-                        googleLogin={this.googleLogin} />
-                </View>
-                <View style={styles.textContainer}>
-                    <Text style={styles.textStyle} >Already have an acount?</Text>
-                </View>
-                <View style={styles.footer}>
-                    <Login login={this.login} />
-                </View>
-            </View>
+            </TouchableWithoutFeedback>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#ffffff'
     },
     backButtonContainer: {
-        width: '100%',
-        height: '6.2%'
+        
     },
     inputContainer: {
-        flex: 1,
-        justifyContent: 'flex-end'
+        marginTop: 80
     },
     socialLoginContainer: {
-        width: '100%',
-        height: '25%',
-        justifyContent: 'flex-end'
+        marginTop: 100
     },
     textContainer: {
-        width: '100%',
-        height: '12.5%',
+        marginTop: 30,
+        marginBottom: 30,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
     }, 
     footer: {
-        width: '100%',
-        justifyContent: 'flex-end'
+        
     },
     textStyle: {
         fontFamily: 'Arial',
@@ -141,4 +137,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default App;
+export default SignUpScreen;

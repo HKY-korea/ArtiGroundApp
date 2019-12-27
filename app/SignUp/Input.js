@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, TextInput } from 'react-native';
-import image from './assets/images/image';
+import image from '../assets/images/image';
 
 const Input = ({ imageSource, inputValue, inputChange }) => (
     <View style={styles.inputContainer}>

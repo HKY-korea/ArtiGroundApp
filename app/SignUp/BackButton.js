@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet, TouchableHighlight } from 'react-native';
-import image from './assets/images/image';
+import image from '../assets/images/image';
 
 const BackButton = ({backWard}) => (
     <View style={styles.backButtonContainer}>
@@ -16,7 +16,8 @@ const BackButton = ({backWard}) => (
 const styles = StyleSheet.create({
     backButtonContainer: {
         marginTop: 7,
-        marginLeft: 7
+        marginLeft: 7,
+        flexDirection: 'row'
     },
     button: {
         height: 25,
